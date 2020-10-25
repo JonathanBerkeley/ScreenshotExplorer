@@ -1,7 +1,7 @@
 This is your config! UwU
 [
 first_run : True
-chrome : ""
+chrome : "C:\Users\mainuser\Desktop\dev\py\screenshot_explorer\seleniumdrivers\chromedriver.exe"
 firefox : ""
-timer : 2
+timer : 5
 ]

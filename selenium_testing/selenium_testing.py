@@ -37,6 +37,7 @@ def main():
     visited_urls = {}
     output_visited_urls = ""
     run_count = 0
+    br = None
     if first_run:
         settings_menu()
     uin = str(input("Main menu: \n\t1: Launch Firefox\n\t2: Launch Chrome\n\t3: Enter settings\n:")).lower()
@@ -53,8 +54,9 @@ def main():
                 default_path = "../seleniumdrivers/geckodriver.exe"
                 br = webdriver.Firefox(executable_path=default_path, service_log_path="nul")
                 write_to_config(default_path, "firefox")
-            except:
+            except Exception as ex:
                 print("Cannot find driver path, please add the path to config file")
+                print("If there was a driver at that path, it was out of date, you need to update the driver to the correct version for your browser: ", ex)
                 raise SystemExit
     elif uin == "chrome" or uin == "2":
         try:
@@ -64,8 +66,9 @@ def main():
                 default_path = "../seleniumdrivers/chromedriver.exe"
                 br = webdriver.Chrome(executable_path=default_path, options=chrome_opt)
                 write_to_config(default_path, "chrome")
-            except:
+            except Exception as ex:
                 print("Cannot find driver path, please add the path to config file")
+                print("If there was a driver at that path, it was out of date, you need to update the driver to the correct version for your browser: ", ex)
                 raise SystemExit
     else:
         print("Invalid input")
