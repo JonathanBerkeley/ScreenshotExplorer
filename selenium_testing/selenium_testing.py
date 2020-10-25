@@ -55,6 +55,7 @@ def main():
                 write_to_config(default_path, "firefox")
             except:
                 print("Cannot find driver path, please add the path to config file")
+                raise SystemExit
     elif uin == "chrome" or uin == "2":
         try:
             br = webdriver.Chrome(executable_path=driver_paths[1], options=chrome_opt)
@@ -65,6 +66,7 @@ def main():
                 write_to_config(default_path, "chrome")
             except:
                 print("Cannot find driver path, please add the path to config file")
+                raise SystemExit
     else:
         print("Invalid input")
         raise SystemExit
