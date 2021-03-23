@@ -19,6 +19,8 @@ import re
 import os
 alphabet = string.ascii_lowercase
 def main():
+    print("\nNewer drivers may need to be added to PATH. Ensure your driver matches your browser version.\n")
+
     first_run = False
     #Look for config:
     try:
