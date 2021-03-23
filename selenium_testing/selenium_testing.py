@@ -153,8 +153,10 @@ def write_to_config(path, browser):
         write_cfg.writelines(cfg_data)
 
 def parse_config(cfg):
+    #unused
     start_point = cfg.find("[")
     end_point = cfg.find("]")
+    
     chrome_path_find = re.search("chrome : \"(.+?)\"\\n", cfg)
     if chrome_path_find:
         chrome_path = chrome_path_find.group(1)
