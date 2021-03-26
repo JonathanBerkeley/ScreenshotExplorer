@@ -9,6 +9,7 @@ except ModuleNotFoundError:
         subprocess.check_call([sys.executable, "-m", "pip", "install", "selenium"])
         from selenium import webdriver
         import selenium
+        from selenium.webdriver.firefox.options import Options
     except:
         print("Unable to import dependencies. Run program as admin or install selenium for python to resolve.")
         raise SystemExit
