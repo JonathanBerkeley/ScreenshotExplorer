@@ -9,7 +9,7 @@ except ModuleNotFoundError:
         subprocess.check_call([sys.executable, "-m", "pip", "install", "selenium"])
         from selenium import webdriver
         import selenium
-    except:
+    except ModuleNotFoundError:
         print("Unable to import dependencies. Run program as admin or install selenium for python to resolve.")
         raise SystemExit
 import random
@@ -18,6 +18,8 @@ import string
 import re
 import os
 alphabet = string.ascii_lowercase
+
+
 def main():
     print("\nNewer drivers may need to be added to PATH. Ensure your driver matches your browser version.\n")
 
@@ -128,6 +130,7 @@ def main():
         print("Program completed, goodbye!")
         raise SystemExit
 
+
 def config_setread():
     with open("config.uwu", "r") as rconfig:
         rconfig = rconfig.read()
@@ -140,6 +143,7 @@ def config_setread():
         except:
             print("Error attempting to read and write to local folder. Ensure python has permissions and try again")
 
+
 def write_to_config(path, browser):
     with open("config.uwu", "r") as read_cfg:
         cfg_data = read_cfg.readlines()
@@ -151,6 +155,7 @@ def write_to_config(path, browser):
             cfg_data[5] = "timer : "+path+"\n"
     with open("config.uwu", "w") as write_cfg:
         write_cfg.writelines(cfg_data)
+
 
 def parse_config(cfg):
     #unused
@@ -172,10 +177,12 @@ def parse_config(cfg):
     dpaths = [str(firefox_path), str(chrome_path)]
     return dpaths
 
+
 def cfg_get_line(line_number):
     with open("config.uwu", "r") as read_cfg:
         cfg_data = read_cfg.readlines()
     return cfg_data[line_number]
+
 
 def save_file(output_visited_urls):
     filename = generate_filename()
@@ -183,6 +190,7 @@ def save_file(output_visited_urls):
     file_create.write(str(output_visited_urls))
     file_create.close()
     return filename
+
 
 def generate_url():
     letter1 = random.randrange(0,16)
@@ -196,6 +204,7 @@ def generate_url():
     + str(random.randrange(0,10)))
     return base_url
 
+
 def generate_filename():
     user_filename = str(input("Enter filename (or leave blank for random)\n: "))
     if user_filename != "":
@@ -207,6 +216,7 @@ def generate_filename():
         tmp_var = str(alphabet_with_nums[random_var:random_var+1])
         fname.append(tmp_var)
     return ''.join(fname)
+
 
 def settings_menu():
     loop_this = 1
@@ -241,5 +251,7 @@ def settings_menu():
             rmenu = str(input("\nReturn to settings menu? (Y/N)\n:")).lower()
             if rmenu == "n":
                 loop_this = -1
+
+
 if __name__ == "__main__":
     main()
